@@ -1,0 +1,8 @@
+numpy==1.26.0
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
+pandas==2.2.2
+scikit-learn==1.5.1
+matplotlib==3.9.2
+plotly==5.23.0
