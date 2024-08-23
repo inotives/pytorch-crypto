@@ -57,3 +57,22 @@ def plot_predictions(y_test, predictions, scaler):
 
     fig = go.Figure(data=[trace1, trace2], layout=layout)
     fig.show()
+
+
+def plotly_line_chart(data, title, xlab, ylab): 
+    '''Plot Line chart with Plotly'''
+    fig = go.Figure()
+
+    for d in data: 
+        # Add actual prices trace
+        fig.add_trace(go.Scatter(x=d['xvals'], y=d['yvals'], mode=d['plotly_mode'], name=d['label']))
+
+    # Update layout
+    fig.update_layout(
+        title=title,
+        xaxis_title=xlab,
+        yaxis_title=ylab,
+        legend_title='Legend'
+    )
+
+    return fig

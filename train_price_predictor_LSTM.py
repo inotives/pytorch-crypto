@@ -8,8 +8,8 @@ from torch.utils.data import DataLoader, TensorDataset, random_split
 import plotly.graph_objs as go
 import matplotlib.pyplot as plt
 
-import data_preprocessing as dp
-from model_LSTM import LSTMModel
+import utils.data_preprocessing as dp
+from models.model_LSTM import LSTMModel
 
 
 

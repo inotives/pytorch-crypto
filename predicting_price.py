@@ -2,8 +2,8 @@ import numpy as np
 import torch
 from sklearn.preprocessing import StandardScaler
 
-import data_preprocessing as dp
-from model_LSTM import LSTMModel
+import utils.data_preprocessing as dp
+from models.model_LSTM import LSTMModel
 
 
 # Function to prepare input data for prediction

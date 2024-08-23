@@ -6,3 +6,4 @@ pandas==2.2.2
 scikit-learn==1.5.1
 matplotlib==3.9.2
 plotly==5.23.0
+statsmodels==0.14.2
