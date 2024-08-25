@@ -74,6 +74,8 @@ class SARIMAXModel():
             'upper_conf_int': forecasted_conf_int.iloc[:, 1]
         }, index=future_dates)
 
+        print(forecast_df)
+
         return forecast_df, target_series, sarimax_model_fit
     
     def evaluate_result(self):

@@ -23,7 +23,7 @@ class RandomForestModel():
 
         return data 
 
-    def run_predictor(self): 
+    def run_predictor(self, forecast_days=3): 
         # define features X and target Y 
         df = self.data_df
         X = df[['close', 'volume', 'ema_20', 'ma_20', 'rsi']].values
@@ -55,7 +55,7 @@ class RandomForestModel():
         last_features = X_scaled[-1]  # Last feature set from the dataset
         predicted_prices = []
 
-        for i in range(7):
+        for i in range(forecast_days):
             next_price_scaled = rf.predict(last_features.reshape(1, -1))
             
             # Update the feature set for the next prediction (recursive forecasting)
@@ -69,7 +69,7 @@ class RandomForestModel():
         predicted_prices = price_scaler.inverse_transform(np.array(predicted_prices).reshape(-1, 1))
 
 
-        print("Random Forest forecast for the next 7 days:", predicted_prices.flatten())
+        print(f"Random Forest forecast for the next {forecast_days} days:", predicted_prices.flatten())
 
 
         

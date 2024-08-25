@@ -24,14 +24,14 @@ class XGBoostModel():
 
         return data 
 
-    def run_predictor(self): 
+    def run_predictor(self, forecast_days=3): 
         # define features X and target Y 
         df = self.data_df
         X = df[['close', 'volume', 'ema_20', 'ma_50', 'rsi']].values
-        y = df['close'].shift(-7).dropna().values # Target is the price 7 days in the future
+        y = df['close'].shift(-forecast_days).dropna().values # Target is the price 7 days in the future
 
         # Drop the last 7 rows from X since they have no corresponding y
-        X = X[:-7]
+        X = X[:-forecast_days]
         
         # Standardize the features
         scaler = StandardScaler()
@@ -51,14 +51,14 @@ class XGBoostModel():
 
         # Calculate the Mean Squared Error (MSE)
         mse = mean_squared_error(y_test, y_pred)
-        print(f"Mean Squared Error: {mse}")
+        print(f"Mean Squared Error: {mse}", "Lower MSE is better. A higher MSE suggests that your model's predictions are further from the actual values.")
 
 
         # Predict the next 7 days using the last available feature set
         last_features = X_scaled[-1]
 
         predicted_prices = []
-        for i in range(7):
+        for i in range(forecast_days):
             next_price = xg_reg.predict(last_features.reshape(1, -1))
             
             # Append the predicted price to the list
@@ -68,7 +68,7 @@ class XGBoostModel():
             last_features = np.array([next_price[0], df['volume'].iloc[-1], df['ema_20'].iloc[-1], df['ma_50'].iloc[-1], df['rsi'].iloc[-1]])
             last_features = scaler.transform(last_features.reshape(1, -1))
 
-        print("XGBoost forecast for the next 7 days:", predicted_prices)
+        print(f"XGBoost forecast for the next {forecast_days} days:", predicted_prices)
 
 
         return 
