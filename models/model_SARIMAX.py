@@ -7,6 +7,62 @@ from utils.plots import plotly_line_chart
 
 
 class SARIMAXModel():
+    ''' SARIMAX (Seasonal AutoRegressive Integrated Moving Average with eXogenous variables)
+        an extension of the ARIMA (AutoRegressive Integrated Moving Average) model that allows 
+        for the inclusion of both seasonal components and external (exogenous) variables 
+        in time series forecasting.
+
+        KEY COMPONENTS: 
+        1. ARIMA Components: 
+            - The AR component captures the relationship between an observation and a number of lagged observations.
+              represented as p. 
+            - The I component deals with the differencing of observations to make the time series stationary.
+              represent as d 
+            - The MA component captures the relationship between an observation and a residual error 
+              from a moving average model applied to lagged observations.
+              represent as q
+        2. Seasonal Components:
+        - SARIMAX can model seasonality, which is the repeating patterns or cycles in time series data, 
+          typically over a fixed period like a year, month, week, etc.
+        - Seasonal AR (P), Seasonal I (D), and Seasonal MA (Q) are analogous to 
+          the non-seasonal AR, I, and MA components but are applied to seasonal patterns.
+        - Seasonal Period (S): The length of the seasonal cycle (e.g., 12 for monthly data with yearly seasonality).
+
+        3. eXogenous Variables (X):
+        - SARIMAX allows the inclusion of exogenous variables, which are external factors 
+          that can influence the target time series but are not necessarily part of it.
+        - These variables are represented by X, and could include metrics like GDP, interest rates, 
+          weather data, or other related time series that might impact the target variable.
+        - Including exogenous variables allows the model to account for these external influences, 
+          potentially improving the accuracy of the forecast.
+
+            HOW SARIMAX WORKS: 
+        1. The model first difference the data if required (based on d and D) to achieve stationary. 
+           This step removes trends and seasonality, leaving a more stable time series.
+        2. The model then uses the AR and MA components to capture relationships between 
+           the lagged observations and the residual errors.
+        3. The seasonal components capture the repeating patterns in the data over 
+           the defined seasonal period S
+        4. The exogenous variables are included to account for their influence on the target time series, 
+           providing additional predictive power.
+        5. The SARIMAX model is then fitted to the historical data, learning the relationships 
+           between the time series data and the exogenous variables.
+        6. Once fitted, the model can be used to forecast future values, considering both 
+           the inherent patterns in the time series and the influence of exogenous variables.
+
+
+        The confidence interval (CI) is a range of values that is used to estimate the uncertainty surrounding 
+        a predicted value or parameter estimate. In the context of time series forecasting 
+        with models like ARIMA or SARIMA, the confidence interval provides a range within which 
+        the true future values of the time series are expected to fall with a certain probability.
+        
+        Upper and Lower Bounds: The confidence interval is defined by two bounds:
+            - Lower Bound (Lower Confidence Limit): The minimum value within the interval.
+            - Upper Bound (Upper Confidence Limit): The maximum value within the interval.
+        Interpretation: The wider the confidence interval, the greater the uncertainty in the prediction. 
+        A narrow confidence interval indicates more precise predictions.
+    '''
+    
     def __init__(self, data_src):
         self.data_src = data_src
 

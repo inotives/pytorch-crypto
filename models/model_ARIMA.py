@@ -5,6 +5,32 @@ from statsmodels.tsa.arima.model import ARIMA
 import utils.data_preprocessing as dp 
 
 class ARIMAModel():
+    ''' ARIMA (Auto Regressive Integrated Moving Average)
+        It is a class of models that explains a given time series based on its own past values, 
+        its own past errors, and it integrates differencing to make the time series stationary.
+
+        KEY COMPONENT of ARIMA: 
+        1) AR (AutoRegressive) Component
+        p: This represents the number of lag observations included in the model (i.e., the number of terms). 
+            It shows the relationship between an observation and some number of lagged observations.
+        
+        2) I (Integrated) Component
+        d: This represents the number of times the data have had past values subtracted to make 
+            the series stationary (i.e., the number of differencing required to remove trends and seasonality). 
+        
+        3) MA (Moving Average) Component
+        q: This represents the number of lagged forecast errors in the prediction equation.
+
+        HOW ARIMA WORKS: 
+        1. Identify if the time series is stationary. If not, apply differencing until it becomes stationary. 
+        This determines the order d. Use autocorrelation function (ACF) and 
+        partial autocorrelation function (PACF) plots to determine the appropriate values for p and q.
+        2. Estimate the coefficients used in AR and MA Components using methods like maximum likelihood estimation.
+        3. Check if the residuals (errors) of the model resemble white noise, 
+        meaning they are independently and identically distributed with a mean of zero.
+        If the residuals are not white noise, adjust the model accordingly.
+        4. Use the fitted ARIMA model to forecast future values.
+    '''
     def __init__(self, data_src): 
         self.data_src = data_src
         self.data_df = self.data_prep()

@@ -3,7 +3,9 @@ from models.model_RandomForest import RandomForestModel
 from models.model_MA import MovingAverageModel
 from models.model_ARIMA import ARIMAModel
 from models.model_SARIMAX import SARIMAXModel
+from models.model_VAR import VARModel
 from models.model_LSTM import run_predictor as lstm_predictor
+
 
 
 
@@ -19,20 +21,24 @@ if __name__=='__main__':
     ma = MovingAverageModel(ohlcv_dataset)
     ma.run_predictor(forecast_days=7)
 
-    print('\nPRICE PREDICTOR USING Random Forest \n--------------------------------------------')
-    rf = RandomForestModel(ohlcv_dataset)
-    rf.run_predictor(forecast_days=7)
+    print('\nPRICE PREDICTOR USING Vector Autoregression (VAR) \n--------------------------------------------')
+    va = VARModel(ohlcv_dataset)
+    va.run_predictor(forecast_days=7)
 
-    print('\nPRICE PREDICTOR USING XGBOOST \n--------------------------------------------')
-    xg = XGBoostModel(ohlcv_dataset)
-    xg.run_predictor(forecast_days=7)
+    # print('\nPRICE PREDICTOR USING Random Forest \n--------------------------------------------')
+    # rf = RandomForestModel(ohlcv_dataset)
+    # rf.run_predictor(forecast_days=7)
 
-    print('\nPRICE PREDICTOR USING ARIMA \n--------------------------------------------\n<might take awhile to run>')
-    ar = ARIMAModel(ohlcv_dataset)
-    ar.run_predictor(forecast_days=7)
+    # print('\nPRICE PREDICTOR USING XGBOOST \n--------------------------------------------')
+    # xg = XGBoostModel(ohlcv_dataset)
+    # xg.run_predictor(forecast_days=7)
 
-    print('\nPRICE PREDICTOR USING SARIMAX \n--------------------------------------------\n<might take awhile to run>')
-    ar = SARIMAXModel(ohlcv_dataset)
-    ar.run_predictor(forecast_days=7)
+    # print('\nPRICE PREDICTOR USING ARIMA \n--------------------------------------------\n<might take awhile to run>')
+    # ar = ARIMAModel(ohlcv_dataset)
+    # ar.run_predictor(forecast_days=7)
+
+    # print('\nPRICE PREDICTOR USING SARIMAX \n--------------------------------------------\n<might take awhile to run>')
+    # ar = SARIMAXModel(ohlcv_dataset)
+    # ar.run_predictor(forecast_days=7)
 
     

@@ -12,6 +12,35 @@ import utils.data_preprocessing as dp
 
 
 class LSTMModel(nn.Module):
+    """ LSTM (Long Short-Term Memory) Networks
+    a type of recurrent neural network (RNN) specifically designed to handle sequential data. 
+    They are particularly effective for tasks that involve long-term dependencies, such as time series forecasting.
+
+    HOW LSTM WORK
+    ---------------
+    LSTMs introduce a "cell state" that allows them to retain information for long periods of time. 
+    This makes them well-suited for tasks where past information is crucial for predicting future events.
+
+    Using LSTMs for Bitcoin Price Prediction
+    1. Data Preparation:
+    - Collect data on Bitcoin's price, volume, and other relevant features over a sufficient period.
+    - Feature engineering: Create additional features like moving averages, RSI, MACD, etc., to provide more context.
+    - Normalize data: Scale the features to a common range (e.g., 0-1) to improve model convergence.
+
+    2. Model Architecture:
+    - Define LSTM layers: Create a sequence of LSTM layers to capture long-term dependencies.
+    - Add dense layers: Use dense layers to process the output from the LSTM layers and make predictions.
+
+    3. Training:
+    - Split data: Divide the data into training and testing sets.
+    - Compile the model: Specify the loss function (e.g., mean squared error) and optimizer (e.g., Adam).
+    - Train the model: Fit the model to the training data.
+
+    4. Evaluation:
+    - Evaluate on test set: Use the trained model to make predictions on the testing set and evaluate its performance using metrics 
+      like MSE, MAE, or R-squared.
+    """
+    
     def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(LSTMModel, self).__init__()
         self.hidden_size = hidden_size
