@@ -31,4 +31,4 @@ Below are list of forecasting model implemented along with the use of OHLCV data
 - Random Forest 
 - XGBoost
 - SVR (wip)
-- 
+- VAR (Vector Auto Regression)

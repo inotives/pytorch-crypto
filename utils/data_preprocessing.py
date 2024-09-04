@@ -224,6 +224,13 @@ def calculate_wma(series, window):
     return series.rolling(window).apply(lambda prices: np.dot(prices, weights) / weights.sum(), raw=True)
 
 
+def text_data_preprocessing(text):
+    '''Preprocessing for text related dataset'''
+
+    processed_text = text
+    return processed_text
+
+
 if __name__ == '__main__':
 
     # load csv data to dataframe
