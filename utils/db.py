@@ -120,6 +120,7 @@ class DBConnection:
         else:
             print("Engine is not created yet.")
 
+
 # --------- SQL LISTS ---------------------------------------------------------------------
 NEWS_ARTICLES_CNT = """
 SELECT 

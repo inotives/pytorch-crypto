@@ -3,7 +3,7 @@ import torch
 from sklearn.preprocessing import StandardScaler
 
 import utils.data_preprocessing as dp
-from models.model_LSTM import LSTMModel
+from models.price_predictors.model_LSTM import LSTMModel
 
 
 # Function to prepare input data for prediction

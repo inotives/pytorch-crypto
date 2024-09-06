@@ -1,10 +1,10 @@
-from models.model_XGBoost import XGBoostModel
-from models.model_RandomForest import RandomForestModel
-from models.model_MA import MovingAverageModel
-from models.model_ARIMA import ARIMAModel
-from models.model_SARIMAX import SARIMAXModel
-from models.model_VAR import VARModel
-from models.model_LSTM import run_predictor as lstm_predictor
+from models.price_predictors.model_XGBoost import XGBoostModel
+from models.price_predictors.model_RandomForest import RandomForestModel
+from models.price_predictors.model_MA import MovingAverageModel
+from models.price_predictors.model_ARIMA import ARIMAModel
+from models.price_predictors.model_SARIMAX import SARIMAXModel
+from models.price_predictors.model_VAR import VARModel
+from models.price_predictors.model_LSTM import run_predictor as lstm_predictor
 
 
 

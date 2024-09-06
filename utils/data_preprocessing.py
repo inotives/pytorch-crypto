@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-
 def data_load(csvfile, start=None, end=None):
     """Load Data from CSV to Dataframe"""
     data = pd.read_csv(csvfile, sep=';', parse_dates=['timeOpen', 'timeClose', 'timeHigh', 'timeLow', 'timestamp'])
@@ -223,12 +222,6 @@ def calculate_wma(series, window):
     weights = np.arange(1, window + 1)
     return series.rolling(window).apply(lambda prices: np.dot(prices, weights) / weights.sum(), raw=True)
 
-
-def text_data_preprocessing(text):
-    '''Preprocessing for text related dataset'''
-
-    processed_text = text
-    return processed_text
 
 
 if __name__ == '__main__':

@@ -1,6 +1,4 @@
-from models.model_LSTM import train_model
-
-
+from models.price_predictors.model_LSTM import train_model
 
 if __name__=='__main__': 
 
